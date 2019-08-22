@@ -82,6 +82,8 @@ function smallestInt(A) {
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Tests written in vanilla JS:  would ordinarily be written in Jest or Mocha
+// Choice was made to write in vanilla JS to fit project description more 
+// closely, as well as to avoid the need to install packages.
 ///////////////////////////////////////////////////////////////////////////////
 function runTests() {
   console.clear();
@@ -90,80 +92,60 @@ function runTests() {
   // print results to console
 
   // Test 1; should return 5
-  // General test
+  // General test; implemented test
   arr1 = [1, 3, 6, 4, 1, 2]
   testVal1 = smallestInt(arr1);
-  if (testVal1 == "smallestInt not implemented"){
+  expected1 = 5;
+  if (typeof testVal1 != 'number'){
     console.log(testVal1);
     return;
-  } else if (testVal1==5){
-    console.log('Test 1 passed', testVal1);
-  } else {
-    console.log('Test 1 failed', testVal1);
-  }
+  } 
+  console.log(generateTestLog(1, expected1, testVal1));
 
-    // Test 2; should return 4
-    // Test no missing integers
-    arr2 = [1, 2, 3];
-    testVal2 = smallestInt(arr2);
-    if (testVal2==4){
-      console.log('Test 2 passed',testVal2);
-    } else {
-      console.log('Test 2 failed', testVal2);
-    }
+  // Test 2; should return 4
+  // Test no missing integers
+  arr2 = [1, 2, 3];
+  testVal2 = smallestInt(arr2);
+  expected2 = 4;
+  console.log(generateTestLog(2, expected2, testVal2));
 
-    // Test 3; should return 1
-    // Test negative integers
-    arr3 = [-1,-3];
-    testVal3 = smallestInt(arr3);
-    if (testVal3 == 1){
-      console.log('Test 3 passed', testVal3);
-    } else {
-      console.log('Test 3 failed', testVal3);
-    }
+  // Test 3; should return 1
+  // Test negative integers
+  arr3 = [-1,-3];
+  testVal3 = smallestInt(arr3);
+  expected3 = 1;
+  console.log(generateTestLog(3, expected3, testVal3));
 
-    // Test 4; should return 1,000,001
-    // Test maximum array size
-    arr4 = [...Array(100001).keys()]
-    arr4.splice(0,1)
-    arr4 = arr4.map((x) => x + 900001)
-    testVal4 = smallestInt(arr4);
-    if (testVal4 == 1){
-      console.log('Test 4 passed', testVal4);
-    } else {
-      console.log('Test 4 failed', testVal4);
-    }
+  // Test 4; should return 1
+  // Test maximum array size
+  arr4 = [...Array(100001).keys()]
+  arr4.splice(0,1)
+  arr4 = arr4.map((x) => x + 900001)
+  testVal4 = smallestInt(arr4);
+  expected4 = 1;
+  console.log(generateTestLog(4, expected4, testVal4));
 
-    // Test 5; should return 100001
-    // Test large value input
-    arr5 = [...Array(100001).keys()]
-    arr5.splice(0,1)
-    testVal5 = smallestInt(arr5);
-    if (testVal5 == 100001){
-      console.log('Test 5 passed', testVal5);
-    } else {
-      console.log('Test 5 failed', testVal5);
-    }
+  // Test 5; should return 100001
+  // Test large value input
+  arr5 = [...Array(100001).keys()]
+  arr5.splice(0,1)
+  testVal5 = smallestInt(arr5);
+  expected5 = 100001;
+  console.log(generateTestLog(5, expected5, testVal5));
 
-    // Test 6; should return 1
-    // Test empty array
-    arr6 = []
-    testVal6 = smallestInt(arr6);
-    if (testVal6 == 1){
-      console.log('Test 6 passed', testVal6);
-    } else {
-      console.log('Test 6 failed', testVal6);
-    }
+  // Test 6; should return 1
+  // Test empty array
+  arr6 = []
+  testVal6 = smallestInt(arr6);
+  expected6 = 1;
+  console.log(generateTestLog(6, expected6, testVal6));
 
-    // Test 7; should return 1
-    // Test null input
-    arr7 = null
-    testVal7 = smallestInt(arr7);
-    if (testVal7 == 1){
-      console.log('Test 7 passed', testVal7);
-    } else {
-      console.log('Test 7 failed', testVal7);
-    }
+  // Test 7; should return 1
+  // Test null input
+  arr7 = null
+  testVal7 = smallestInt(arr7);
+  expected7 = 1;
+  console.log(generateTestLog(7, expected7, testVal7));
 }
 ///////////////////////////////////////////////////////////////////////////////
 // function benchmarkText(fun, inp) {
@@ -188,8 +170,13 @@ function runBenchmark() {
   console.log(`Calling smallestInt on the worst 
   case scenario with ${worstCase.length} items 
   and a max value of ${Math.max(...worstCase)} 
-  returned ${worstRes} ran in ${t1-t0} ms`)
-  
-  // print result to console
+  returned ${worstRes} ran in ${t1-t0} ms`);
 }
 ///////////////////////////////////////////////////////////////////////////////
+function generateTestLog(id, expected, result) {
+  if (expected == result) {
+    return `Test ${id} passed: Expected value ${expected}; returned value ${result}`;
+  } else {
+    return `Test ${id} failed: Expected value ${expected}; returned value ${result}`;
+  }
+} 
