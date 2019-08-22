@@ -16,7 +16,8 @@ each element of array A is an integer within the range [−1,000,000..1,000,000]
 
 Write test cases to validate that your implementation conforms to the specification.
 
-Additionally, implement the benchmark function to test the performance of your solution. The benchmark should be able to run in the browser and be capable of outputting a reasonably reliable score when comparing solutions in the same environment.
+Additionally, implement the benchmark function to test the performance of your solution. The benchmark should be able to run 
+in the browser and be capable of outputting a reasonably reliable score when comparing solutions in the same environment.
 
 You will be evaluated based on:
 - Correctness according to instructions
