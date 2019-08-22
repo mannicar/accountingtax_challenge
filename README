@@ -1,0 +1,20 @@
+To test the Accounting Tax Challenge, please open the tests.html file with your preferred browser.
+
+You may use any browser and click the "Run Tests" or "Run Benchmark" button to execute the challenge code.
+
+Output should be visible by using developer tools.
+
+FURTHER DEVELOPMENT
+
+1.  Packaging project into NPM project
+2.  Using Mocha or Jest to run unit tests
+	2.a. Tests were written without the use of additional node packages to avoid the need to use node or install any additional packages.
+3.  The inclusion of benchmark testing option in unit tests
+
+OBSERVATIONS
+
+1.  Algorithm runs optimally with O(n) operation time
+2.  Various heuristic optimizations have been included, namely:
+	2.a. The avoidance of consideration on negative numbers, as the output is dependent only on positive integers (natural numbers)
+	2.b. The use of an array to track encountered integers; using an object as a hashmap results in a ~33% increase in operational time.
+3.  Alternative of sorting input array and looking for first missing integer results in O(n*log(n)) operation time, because the optimal sort algorithm has a O(n*log(n)) operation time.
