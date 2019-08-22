@@ -1,26 +1,26 @@
-///////////////////////////////////////////////////////////////////////////////
-// Pseudocode
-// function smallestInt(A):
-//   1. Generate collection of possible integers
-//   2. Discard any potential negative integers
-//   3. Iterate over A to account for elements in generated collection
-//   4. Iterate over ordered generated collection to find first gap greater than 0.
-///////////////////////////////////////////////////////////////////////////////
-// Benchmark results:
-// Calling smallestInt on the worst 
-//   case scenario with 100000 items 
-//   and a max value of 1000000 
-//   returned 1 ran in 99.4100000243634 ms
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+// Pseudocode                                                                  //
+// function smallestInt(A):                                                    //
+//   1. Generate collection of possible integers                               //
+//   2. Discard any potential negative integers                                //
+//   3. Iterate over A to account for elements in generated collection         //
+//   4. Iterate over ordered collection to find first gap greater than 0.      //
+/////////////////////////////////////////////////////////////////////////////////
+// Benchmark results:                                                          //
+// Calling smallestInt on the worst                                            //
+//   case scenario with 100000 items                                           //
+//   and a max value of 1000000                                                //
+//   returned 1 ran in 99.4100000243634 ms                                     //
+/////////////////////////////////////////////////////////////////////////////////
 // function smallestInt(A) {
-
+//
 //   maxVal = Math.max(...A);
-
+//
 //   if (maxVal <= 0) {
 //     return 1
-
+//
 //   ordered = {}
-
+//
 //   for (i = 0; i < maxVal; i++) {
 //     currVal = A[i];
 //     if (currVal < 0) {
@@ -28,28 +28,28 @@
 //     }
 //     ordered[currVal] = currVal;
 //   }
-
+//
 //   for (i = 1; i < maxVal; i++) {
 //     if (ordered[i] == null){
 //       return i
 //     }
 //   } 
-
+//
 //   return maxVal+1
 // }
-///////////////////////////////////////////////////////////////////////////////
-// Benchmark Results:
-// Calling smallestInt on the worst 
-//   case scenario with 100000 items 
-//   and a max value of 1000000 
-//   returned 1 ran in 69.32999996934086 ms
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+// Benchmark Results:                                                          //
+// Calling smallestInt on the worst                                            //
+//   case scenario with 100000 items                                           //
+//   and a max value of 1000000                                                //
+//   returned 1 ran in 69.32999996934086 ms                                    //
+/////////////////////////////////////////////////////////////////////////////////
 function smallestInt(A) {
   // Null check
   if (A == null || A.length == 0) {
     return 1
   }
-  // Generate null array
+  // Generate null array to order
   maxVal = Math.max(...A);
 
   if (maxVal <= 0) {
@@ -80,11 +80,11 @@ function smallestInt(A) {
   // If no integer is missing, return next integer
   return maxVal+1
 }
-///////////////////////////////////////////////////////////////////////////////
-// Tests written in vanilla JS:  would ordinarily be written in Jest or Mocha
-// Choice was made to write in vanilla JS to fit project description more 
-// closely, as well as to avoid the need to install packages.
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+// Tests written in vanilla JS -- would ordinarily be written in Jest or Mocha.//
+// Choice was made to write in vanilla JS to fit project description more      //
+// closely, as well as to avoid the need to install additional packages.       //
+/////////////////////////////////////////////////////////////////////////////////
 function runTests() {
   console.clear();
   console.log('Running tests...');
@@ -177,6 +177,7 @@ function generateTestLog(id, expected, result) {
   if (expected == result) {
     return `Test ${id} passed: Expected value ${expected}; returned value ${result}`;
   } else {
-    return `Test ${id} failed: Expected value ${expected}; returned value ${result}`;
+    return `Test ${id} FAILED: Expected value ${expected}; returned value ${result}`;
   }
 } 
+///////////////////////////////////////////////////////////////////////////////
